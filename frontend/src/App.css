@@ -1,7 +1,5 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -40,3 +38,27 @@
 .read-the-docs {
   color: #888;
 }
+
+.btn-outline-orange {
+  color: orange !important;
+  border-color: orange !important;
+}
+
+.btn-outline-orange:hover {
+  background-color: orange !important;
+  color: white !important;
+}
+
+.btn-orange {
+  background-color: orange !important;
+  color: white !important;
+  border-color: orange !important;
+}
+
+.btn-orange:hover{
+  color: orange !important;
+  border-color: orange !important;
+  background-color: white !important;
+}
+
+

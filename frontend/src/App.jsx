@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  const [users, setUsers] = useState([]);
+import HomePage from './pages/HomePage';
+// import Programmes from './pages/Programmes'; // Exemple de page Programme
+import ReservationPage from './pages/ReservationPage'; 
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
-  useEffect(() => {
-    axios.get('http://127.0.0.1:5000/api/users')
-      .then(response => {
-        setUsers(response.data);
-      })
-      .catch(error => {
-        console.error('Il y a une erreur lors de la récupération des utilisateurs:', error);
-      });
-  }, []);
 
+const App = () => {
   return (
-    <div>
-      <h1>Liste des utilisateurs</h1>
-      <ul>
-        {users.map((user, index) => (
-          <li key={index}>{user.name} - {user.email}</li>
-        ))}
-      </ul>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/programmes" element={<Programmes />} /> */}
+        <Route path="/reserver" element={<ReservationPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} /> 
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App

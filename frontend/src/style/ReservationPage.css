@@ -1,0 +1,76 @@
+/* Personnalisation du calendrier */
+.react-calendar {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Couleur des dates et des jours */
+.react-calendar__tile {
+  color: #333; /* couleur sombre pour les dates */
+}
+
+/* Couleur des dates sélectionnées */
+.react-calendar__tile--active {
+  background-color: #007bff; /* couleur bleu pour la date sélectionnée */
+  color: white; /* texte blanc pour la date sélectionnée */
+}
+
+/* Changer la couleur du mois */
+.react-calendar__navigation__label {
+  color: #333; /* couleur sombre pour le mois */
+}
+
+/* Modifier la couleur de fond des jours de la semaine */
+.react-calendar__month-view__weekdays__weekday {
+  background-color: #f4f4f4; /* fond gris clair pour les jours de la semaine */
+  color: #333; /* couleur sombre pour le texte */
+}
+
+/* Personnalisation pour le fond des jours */
+.react-calendar__tile--now {
+  background-color: orange; /* fond orange pour aujourd'hui */
+  color: #fff; /* texte blanc pour aujourd'hui */
+}
+
+.react-calendar__navigation__arrow{
+  color: #333;
+}
+  
+/* Personnalisation de la Card pour les créneaux */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+  
+.card-header {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+  
+.card-body {
+  padding: 1.5rem;
+}
+  
+  /* Liste des créneaux */
+.list-group-item {
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+  
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+  
+  /* Ajout d'un effet de survol sur les créneaux */
+.list-group-item.active {
+  background-color: #ff6f61;
+  color: white;
+}
+  
