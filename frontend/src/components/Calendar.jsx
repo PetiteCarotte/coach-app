@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'; // Styles par défaut
+import 'react-calendar/dist/Calendar.css'; 
 
-const CalendarComponent = () => {
-  const [date, setDate] = useState(new Date());
+const CalendarComponent = ({ onDateSelect }) => {
+  const [date, setDate] = useState(null); 
 
   const handleDateChange = (newDate) => {
     setDate(newDate);
-    // Logique pour charger les créneaux disponibles pour cette date
+  };
+
+  const handleDateClick = (value) => {
+    const adjustedDate = new Date(value.getTime() - value.getTimezoneOffset() * 60000)
+      .toISOString()
+      .split('T')[0]; 
+    onDateSelect(adjustedDate);
   };
 
   return (
@@ -15,7 +21,8 @@ const CalendarComponent = () => {
       <Calendar
         onChange={handleDateChange}
         value={date}
-        className="react-calendar custom-calendar" // Ajout d'une classe personnalisée
+        className="react-calendar custom-calendar" // Classe personnalisée
+        onClickDay={handleDateClick}
       />
     </div>
   );
