@@ -39,7 +39,7 @@ const ReservationPage = () => {
     fetchPrograms().then(setPrograms).catch(console.error);
 
     // Vérifiez si le client est connecté (exemple avec un token dans le localStorage)
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('userToken');
     setIsAuthenticated(!!token); // Si le token existe, le client est connecté
   }, []);
 
