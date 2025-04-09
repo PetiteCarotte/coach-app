@@ -31,8 +31,8 @@
 }
 
 /* Personnalisation pour le fond des jours */
-.react-calendar__tile--now {
-  background-color: orange; /* fond orange pour aujourd'hui */
+.react-calendar__tile--now:not(.react-calendar__tile--active) {
+  background-color: rgba(255, 166, 0, 0.592); /* fond orange pour aujourd'hui si non actif */
   color: #fff; /* texte blanc pour aujourd'hui */
 }
 
@@ -41,7 +41,7 @@
 }
   
 /* Personnalisation de la Card pour les créneaux */
-.card {
+/* .card {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -49,28 +49,80 @@
 .card-header {
   background-color: #f8f9fa;
   font-weight: bold;
-}
+} */
   
 .card-body {
   padding: 1.5rem;
 }
   
   /* Liste des créneaux */
-.list-group-item {
+/* .list-group-item {
   padding: 10px 15px;
   border-radius: 8px;
   font-size: 1.1rem;
   margin-bottom: 10px;
-}
+} */
   
-.list-group-item:hover {
+/* .list-group-item:hover {
   background-color: #f8f9fa;
   cursor: pointer;
-}
+} */
   
   /* Ajout d'un effet de survol sur les créneaux */
-.list-group-item.active {
+/* .list-group-item.active {
   background-color: #ff6f61;
   color: white;
+} */
+.bg-orange {
+  background-color: orange !important;
+  color: white !important;
 }
-  
+
+.reservation-page {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.list-group-item {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+.list-group-item.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+button {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.container {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
