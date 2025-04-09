@@ -2,16 +2,34 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card, InputGroup } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
+import { loginUser } from "../services/authService";
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate(); // Redirection après la connexion
 
     const validationSchema = Yup.object({
         email: Yup.string().email("Email invalide").required("Champ requis"),
         password: Yup.string().min(6, "Au moins 6 caractères").required("Champ requis"),
     });
+
+    const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+        try {
+            const response = await loginUser(values);
+            // Remplacez cette partie par votre logique de connexion
+            console.log("Connexion réussie:", response);
+            alert("Connexion réussie !"); // Afficher un message de succès
+            // Redirection vers la page d'accueil ou une autre page après la connexion
+            navigate("/"); // Décommentez et utilisez si vous avez un hook useNavigate
+        } catch (error) {
+            console.error("Erreur lors de la connexion:", error);
+            setErrors({ general: error.message }); // Erreur à afficher
+        } finally {
+            setSubmitting(false);
+        }
+    }
 
     return (
         <Container className="d-flex align-items-center justify-content-center vh-100">
@@ -22,7 +40,7 @@ const LoginPage = () => {
                         <Formik
                             initialValues={{ email: "", password: "" }}
                             validationSchema={validationSchema}
-                            onSubmit={(values) => console.log("Form submitted:", values)}
+                            onSubmit={handleSubmit}
                         >
                             {({ handleChange, handleSubmit, values, errors, touched }) => (
                                 <Form onSubmit={handleSubmit}>
@@ -62,7 +80,7 @@ const LoginPage = () => {
                                             {errors.password}
                                         </Form.Control.Feedback>
                                     </Form.Group>
-                                    <Button variant="primary" type="submit" className="w-100 btn-orange">
+                                    <Button variant="primary" type="submit" className="w-100 btn-orange" disabled={values.isSubmitting}>
                                         Se connecter
                                     </Button>
                                 </Form>
