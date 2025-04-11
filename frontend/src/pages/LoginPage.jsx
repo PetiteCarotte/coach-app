@@ -18,18 +18,21 @@ const LoginPage = () => {
     const handleSubmit = async (values, { setSubmitting, setErrors }) => {
         try {
             const response = await loginUser(values);
-            // Remplacez cette partie par votre logique de connexion
-            console.log("Connexion réussie:", response);
-            alert("Connexion réussie !"); // Afficher un message de succès
-            // Redirection vers la page d'accueil ou une autre page après la connexion
-            navigate("/"); // Décommentez et utilisez si vous avez un hook useNavigate
+            if (response.success) {
+                console.log("Connexion réussie:", response);
+                alert("Connexion réussie !");
+                navigate("/");
+            } else {
+                alert(response.message || "Email ou mot de passe incorrect.");
+            }
         } catch (error) {
             console.error("Erreur lors de la connexion:", error);
-            setErrors({ general: error.message }); // Erreur à afficher
+            setErrors({ general: error.message });
+            alert(error.message || "Email ou mot de passe incorrect.");
         } finally {
             setSubmitting(false);
         }
-    }
+    };
 
     return (
         <Container className="d-flex align-items-center justify-content-center vh-100">
