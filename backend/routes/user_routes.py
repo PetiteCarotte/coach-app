@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, session
 from flask_cors import CORS
 from utils.db import app, db
-from controllers.user_controller import register_user
+from controllers.user_controller import handle_register_user, handle_login_user
 from models.User import User, Client, Coach
 import jwt
 import datetime
@@ -21,30 +21,13 @@ user_routes = Blueprint('user_routes', __name__)
 @user_routes.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
-    return register_user(data)
+    return handle_register_user(data)
 
 # Route de connexion
 @user_routes.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    email = data.get('email')
-    password = data.get('password')
-    user = User.query.filter_by(email=email).first()
-
-    if user and user.check_password(password):
-        #afficher l'utilisateur connecté
-        print(f"Utilisateur connecté: {user.first_name} {user.last_name}")
-        #afficher l'ID de l'utilisateur connecté
-        print(f"ID de l'utilisateur connecté: {user.id}")
-        session['user_id'] = user.id  # Stocker l'ID de l'utilisateur dans la session
-        # afficher l'ID de la session
-        print(f"ID de la session: {session['user_id']}")
-        print(session)
-        token = jwt.encode({'user_id': user.id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=2)}, SECRET_KEY, algorithm="HS256")
-        print(f"Token JWT: {token}")
-        return jsonify({'message': 'Connexion réussie !TOKE', 'token': token}), 200
-    else:
-        return jsonify({'error': 'Email ou mot de passe incorrect.'}), 401
+    return handle_login_user(data)
 
 # Route de déconnexion
 @user_routes.route('/logout', methods=['POST'])
