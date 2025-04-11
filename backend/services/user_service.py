@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash
 from sqlalchemy.exc import IntegrityError
 import jwt
 import datetime
+from factories.user_factory import UserFactory
 
 SECRET_KEY = 'supersecretkey'
 
@@ -28,11 +29,9 @@ def register_new_user(first_name, last_name, email, password, confirm_password, 
         return {'error': 'Cet email est déjà utilisé.'}, 400
 
     try:
-        if role == "Client":
-            new_user = Client(first_name=first_name, last_name=last_name, email=email, password=password)
+        new_user = UserFactory.create_user(role, first_name, last_name, email, password) # Utilisation de la factory
 
-        elif role == "Coach":
-            new_user = Coach(first_name=first_name, last_name=last_name, email=email, password=password)
+        if role == "Coach":
             db.session.add(new_user)
             db.session.flush()
 
@@ -42,9 +41,6 @@ def register_new_user(first_name, last_name, email, password, confirm_password, 
                 if slot:
                     availability = CoachAvailableSlot(coach_id=new_user.id, slot_id=slot.id)
                     db.session.add(availability)
-
-        else:
-            return {'error': 'Rôle invalide.'}, 400
 
         db.session.add(new_user)
         db.session.commit()

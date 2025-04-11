@@ -4,6 +4,7 @@ from routes import routes
 from models import Program
 from utils.insert_data import insert_default_programs  
 from utils.insert_data import insert_default_slots
+from factories.user_factory import UserFactory
 
 routes(app)
 if __name__ == '__main__':

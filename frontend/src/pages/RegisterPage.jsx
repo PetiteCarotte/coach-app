@@ -20,7 +20,6 @@ const RegisterPage = () => {
       .oneOf([Yup.ref("password"), null], "Les mots de passe ne correspondent pas")
       .required("Champ requis"),
     role: Yup.string().oneOf(["Client", "Coach"], "Rôle invalide").required("Champ requis"),
-
   });
 
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
@@ -28,7 +27,6 @@ const RegisterPage = () => {
       const response = await registerUser(values);
       console.log("Inscription réussie:", response);
       alert("Inscription réussie !"); // Afficher un message de succès
-      alert(data.message); // Afficher les données de l'utilisateur
       // Redirection vers la page de connexion ou une autre page après l'inscription
       navigate("/login");
     } catch (error) {

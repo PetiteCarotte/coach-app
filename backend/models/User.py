@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # Base User Model
 class User(db.Model):
+    """ Modèle pour les utilisateurs. """
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -16,7 +17,7 @@ class User(db.Model):
         'polymorphic_on': role           # Column used for STI
     }
 
-    def __init__(self, first_name, last_name, email, password, role):
+    def __init__(self, first_name, last_name, email, password, role=None):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
@@ -37,19 +38,15 @@ class User(db.Model):
 
 # Client Model
 class Client(User):
+    """ Modèle pour les clients. """
     __mapper_args__ = {
         'polymorphic_identity': 'Client',  # Identity for Client
     }
 
-    def __init__(self, first_name, last_name, email, password):
-        super().__init__(first_name, last_name, email, password, role='Client')
-
 # Coach Model
 class Coach(User):
+    """ Modèle pour les coachs. """
     __mapper_args__ = {
         'polymorphic_identity': 'Coach',  # Identity for Coach
     }
-
-    def __init__(self, first_name, last_name, email, password):
-        super().__init__(first_name, last_name, email, password, role='Coach')
 
