@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card, InputGroup } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { data, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
 import { registerUser } from "../services/authService";
 

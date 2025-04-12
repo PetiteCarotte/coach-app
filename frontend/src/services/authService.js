@@ -1,5 +1,3 @@
-// Importer jwtDecode pour décoder le token JWT
-
 export const registerUser = async (values) => {
 
   const userData = {
@@ -28,7 +26,8 @@ export const registerUser = async (values) => {
 
     return data; // Retourne la réponse du backend (message de succès)
   } catch (error) {
-    throw error; // Propager l'erreur pour qu'on puisse l'afficher dans le formulaire
+    console.error("Erreur dans registerUser:", error); 
+    throw error; 
   }
 };
 
@@ -63,6 +62,7 @@ export const loginUser = async (values) => {
 
     return { success: true, message: data.message };
   } catch (error) {
+    console.error("Erreur dans loginUser:", error); 
     return { success: false, message: error.message };
   }
 }
