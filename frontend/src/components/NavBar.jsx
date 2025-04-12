@@ -34,6 +34,7 @@ function Navbar() {
                     <Nav className="ms-auto">
                         <Nav.Link as={Link} to="/" className="me-3" style={linkStyle}>Accueil</Nav.Link>
                         <Nav.Link as={Link} to="/reserver" className="me-3" style={linkStyle}>Réservez</Nav.Link>
+                        <Nav.Link as={Link} to="/rendezvous" className="me-3" style={linkStyle}>Mes réservations</Nav.Link>
                     </Nav>
                     {isLoggedIn ? (
                         <Button onClick={handleLogout} variant="outline-secondary" className="ms-2 btn-outline-orange" style={linkStyle}>

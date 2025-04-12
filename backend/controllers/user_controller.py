@@ -1,6 +1,9 @@
 # controllers/user_controller.py
-from flask import jsonify, session
-from services.user_service import authenticate_user, register_new_user
+from flask import jsonify, session, request
+from services.user_service import authenticate_user, register_new_user, get_reservations_for_client
+import jwt
+
+SECRET_KEY = 'supersecretkey'
 
 def handle_register_user(data):
     """ Inscription d'un nouvel utilisateur """
@@ -27,3 +30,17 @@ def handle_login_user(data):
         return jsonify({'message': 'Connexion réussie !', 'token': token}), 200
     else:
         return jsonify({'error': 'Email ou mot de passe incorrect.'}), 401
+
+def handle_get_my_reservations(request):
+    """Gérer la récupération des réservations du client connecté."""
+    token = request.headers.get('Authorization', '').replace('Bearer ', '')
+    try:
+        decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        client_id = decoded.get('user_id')
+
+        # Appeler le service pour récupérer les réservations
+        reservations = get_reservations_for_client(client_id)
+
+        return jsonify(reservations), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 401

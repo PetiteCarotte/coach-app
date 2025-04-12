@@ -1,10 +1,15 @@
-from flask import Blueprint, request, jsonify, session
+from flask import Blueprint, request, jsonify, session, g
 from flask_cors import CORS
 from utils.db import app, db
-from controllers.user_controller import handle_register_user, handle_login_user
+from controllers.user_controller import handle_register_user, handle_login_user, handle_get_my_reservations
 from models.User import User, Client, Coach
+from models.Reservation import Reservation
+from models.Program import Program
+from models.Slot import Slot
 import jwt
 import datetime
+from factories.user_factory import UserFactory
+from strategies.user_strategies import ClientStrategy
 
 SECRET_KEY = 'supersecretkey' 
 
@@ -47,3 +52,9 @@ def dashboard(user_id):
         return jsonify({'message': f'Bienvenue {user.first_name} !', 'role': user.role}), 200
     else:
         return jsonify({'error': 'Utilisateur non trouvé.'}), 404
+
+# Route pour récupérer les réservations de l'utilisateur connecté
+@user_routes.route('/my_reservations', methods=['GET'])
+def get_my_reservations():
+    """Récupérer les réservations du client connecté."""
+    return handle_get_my_reservations(request)

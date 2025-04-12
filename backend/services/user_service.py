@@ -9,6 +9,7 @@ from sqlalchemy.exc import IntegrityError
 import jwt
 import datetime
 from factories.user_factory import UserFactory
+from strategies.user_strategies import ClientStrategy
 
 SECRET_KEY = 'supersecretkey'
 
@@ -30,8 +31,11 @@ def register_new_user(first_name, last_name, email, password, confirm_password, 
 
     try:
         new_user = UserFactory.create_user(role, first_name, last_name, email, password) # Utilisation de la factory
-
+   
+        role_action = new_user.strategy.perform_action() # Utilisation de la stratégie
+        print(f"Action spécifique pour le rôle {role}: {role_action}")
         if role == "Coach":
+
             db.session.add(new_user)
             db.session.flush()
 
@@ -45,7 +49,7 @@ def register_new_user(first_name, last_name, email, password, confirm_password, 
         db.session.add(new_user)
         db.session.commit()
 
-        return {'message': 'Inscription réussie !'}, 201
+        return {'message': 'Inscription réussie !', 'role_action': role_action}, 201
 
     except IntegrityError:
         db.session.rollback()
@@ -64,3 +68,7 @@ def authenticate_user(email, password):
         }, SECRET_KEY, algorithm="HS256")
         return user, token
     return None, None
+
+def get_reservations_for_client(client_id):
+    """Récupérer les réservations pour un client donné."""
+    return ClientStrategy.view_reservations(client_id)
