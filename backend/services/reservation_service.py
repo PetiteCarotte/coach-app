@@ -5,6 +5,9 @@ from models.Reservation import Reservation
 from models.CoachAvailableSlot import CoachAvailableSlot
 from utils.db import db
 from datetime import datetime
+import jwt
+
+SECRET_KEY = 'supersecretkey'
 
 def get_available_slots_service(coach_id, date_str):
     try:
@@ -31,8 +34,12 @@ def get_available_slots_service(coach_id, date_str):
     except Exception as e:
         raise ValueError(f"Erreur lors de la récupération des créneaux disponibles : {str(e)}")
 
-def create_reservation_service(data):
+def create_reservation_service(data, token):
     try:
+        # Décoder le token JWT pour obtenir le client_id
+        decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        client_id = decoded.get('user_id')
+
         date_obj = datetime.strptime(data['date'], '%Y-%m-%d').date()
 
         # Vérifier si le coach a déjà une réservation pour ce créneau
@@ -45,9 +52,9 @@ def create_reservation_service(data):
         if existing_reservation:
             return {'error': 'Le coach a déjà une réservation pour ce créneau.'}
 
-        # Créer la réservation si aucune réservation existante n'est trouvée
+        # Créer la réservation avec le client_id extrait du token
         reservation = Reservation(
-            client_id=1,  # À adapter avec un vrai user_id / JWT
+            client_id=client_id,
             coach_id=data['coach_id'],
             program_id=data['program_id'],
             slot_id=data['slot_id'],
