@@ -3,6 +3,8 @@
 from models.Program import Program
 
 def get_programs_service():
+    """Récupérer la liste des programmes."""
+    
     try:
         programs = Program.query.all()
         return programs

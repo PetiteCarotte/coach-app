@@ -1,7 +1,8 @@
 from utils.db import db
 
-# Reservation Model
 class Reservation(db.Model):
+    """Modèle pour les réservations."""
+
     __tablename__ = 'reservations'
 
     id = db.Column(db.Integer, primary_key=True)

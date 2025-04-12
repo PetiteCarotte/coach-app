@@ -5,4 +5,6 @@ coach_routes = Blueprint('coach_routes', __name__)
 
 @coach_routes.route('/coaches', methods=['GET'])
 def get_coaches():
+    """Récupérer la liste des coachs."""
+    
     return handle_get_coaches()

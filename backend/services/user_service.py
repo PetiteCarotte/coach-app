@@ -60,6 +60,7 @@ def register_new_user(first_name, last_name, email, password, confirm_password, 
 
 def authenticate_user(email, password):
     """ Authentifier l'utilisateur et retourner l'objet utilisateur ainsi que le jeton JWT si réussi """
+    
     user = User.query.filter_by(email=email).first()
     if user and user.check_password(password):
         token = jwt.encode({
@@ -71,4 +72,5 @@ def authenticate_user(email, password):
 
 def get_reservations_for_client(client_id):
     """Récupérer les réservations pour un client donné."""
+    
     return ClientStrategy.view_reservations(client_id)

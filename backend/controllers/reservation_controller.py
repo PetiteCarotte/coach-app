@@ -2,6 +2,8 @@ from services.reservation_service import get_available_slots_service, create_res
 from flask import jsonify, request
 
 def handle_get_available_slots(coach_id, date_str):
+    """Gérer la récupération des créneaux disponibles."""
+    
     try:
         available_slots = get_available_slots_service(coach_id, date_str)
         return jsonify(available_slots), 200

@@ -6,7 +6,7 @@ import jwt
 SECRET_KEY = 'supersecretkey'
 
 def handle_register_user(data):
-    """ Inscription d'un nouvel utilisateur """
+    """Gérer l'inscription d'un nouvel utilisateur."""
 
     first_name = data.get('firstName')
     last_name = data.get('lastName')
@@ -19,7 +19,7 @@ def handle_register_user(data):
     return jsonify(result), status
 
 def handle_login_user(data):
-    """ Connexion d'un utilisateur """
+    """Gérer la connexion d'un utilisateur."""
 
     email = data.get('email')
     password = data.get('password')
@@ -33,6 +33,7 @@ def handle_login_user(data):
 
 def handle_get_my_reservations(request):
     """Gérer la récupération des réservations du client connecté."""
+
     token = request.headers.get('Authorization', '').replace('Bearer ', '')
     try:
         decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])

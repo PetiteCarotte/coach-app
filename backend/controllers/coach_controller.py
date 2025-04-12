@@ -2,6 +2,8 @@ from services.coach_service import get_coaches_service
 from flask import jsonify
 
 def handle_get_coaches():
+    """Gérer la récupération des coachs."""
+    
     try:
         coaches = get_coaches_service()
         return jsonify([coach.to_dict() for coach in coaches]), 200

@@ -3,9 +3,10 @@ from controllers.reservation_controller import handle_get_available_slots, handl
 
 reservation_routes = Blueprint('reservation_routes', __name__)
 
-# Obtenir les créneaux disponibles pour un coach à une date donnée
 @reservation_routes.route('/available_slots', methods=['GET'])
 def get_available_slots():
+    """Récupérer les créneaux disponibles pour un coach à une date donnée."""
+    
     coach_id = request.args.get('coach_id', type=int)
     date_str = request.args.get('date', type=str)
 
@@ -14,9 +15,10 @@ def get_available_slots():
 
     return handle_get_available_slots(coach_id, date_str)
 
-# Créer une réservation
 @reservation_routes.route('/reservations', methods=['POST'])
 def create_reservation():
+    """Créer une réservation."""
+    
     data = request.get_json()
     required_fields = ['coach_id', 'program_id', 'slot_id', 'date']
 

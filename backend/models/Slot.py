@@ -1,7 +1,8 @@
 from utils.db import db
 
-# Slot Model (créneaux horaires génériques)
 class Slot(db.Model):
+    """Modèle pour les créneaux horaires."""
+
     __tablename__ = 'slots'
 
     id = db.Column(db.Integer, primary_key=True)

@@ -1,7 +1,8 @@
 from utils.db import db
 
-# Program Model
 class Program(db.Model):
+    """Modèle pour les programmes d'entraînement."""
+
     __tablename__ = 'programs'
 
     id = db.Column(db.Integer, primary_key=True)

@@ -10,6 +10,8 @@ import jwt
 SECRET_KEY = 'supersecretkey'
 
 def get_available_slots_service(coach_id, date_str):
+    """Récupérer les créneaux disponibles pour un coach donné à une date spécifique."""
+
     try:
         date_obj = datetime.strptime(date_str, '%Y-%m-%d').date()
         slots = Slot.query.all()
@@ -35,6 +37,8 @@ def get_available_slots_service(coach_id, date_str):
         raise ValueError(f"Erreur lors de la récupération des créneaux disponibles : {str(e)}")
 
 def create_reservation_service(data, token):
+    """Créer une réservation pour un client."""
+    
     try:
         # Décoder le token JWT pour obtenir le client_id
         decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])

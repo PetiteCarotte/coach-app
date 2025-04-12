@@ -4,6 +4,8 @@ from models.Slot import Slot
 from models.Program import Program
 
 def insert_default_programs():
+    """Insérer des programmes par défaut dans la base de données."""
+
     # Vérifie si des programmes existent déjà dans la base
     if Program.query.count() == 0:
         # Insérer les programmes par défaut
@@ -21,6 +23,8 @@ def insert_default_programs():
 
 
 def insert_default_slots():
+    """Insérer des créneaux horaires par défaut dans la base de données."""
+    
     # Vérifie si des créneaux existent déjà dans la base de données
     if Slot.query.count() == 0:
         # Définir l'heure de début (8h00) et l'heure de fin (18h00)

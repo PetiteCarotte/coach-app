@@ -1,9 +1,9 @@
 from utils.db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
-# Base User Model
 class User(db.Model):
-    """ Modèle pour les utilisateurs. """
+    """Modèle pour les utilisateurs."""
+
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -36,16 +36,16 @@ class User(db.Model):
             "role": self.role
         }
 
-# Client Model
 class Client(User):
-    """ Modèle pour les clients. """
+    """Modèle pour les clients."""
+
     __mapper_args__ = {
         'polymorphic_identity': 'Client',  # Identity for Client
     }
 
-# Coach Model
 class Coach(User):
-    """ Modèle pour les coachs. """
+    """Modèle pour les coachs."""
+
     __mapper_args__ = {
         'polymorphic_identity': 'Coach',  # Identity for Coach
     }

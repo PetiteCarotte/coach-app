@@ -1,7 +1,8 @@
 from utils.db import db
 
-# Association Coach ↔ Slot
 class CoachAvailableSlot(db.Model):
+    """Modèle pour les créneaux disponibles des coachs."""
+
     __tablename__ = 'coach_available_slots'
 
     id = db.Column(db.Integer, primary_key=True)
