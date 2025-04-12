@@ -5,9 +5,24 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = Flask(__name__)
-app.secret_key = 'supersecretkey'  # Clé secrète pour les sessions
-app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+class DatabaseManager:
+    """Singleton pour la gestion de la base de données."""
+    _instance = None
 
-db = SQLAlchemy(app)
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(DatabaseManager, cls).__new__(cls)
+            cls._instance.init_app()
+        return cls._instance
+
+    def init_app(self):
+        self.app = Flask(__name__)
+        self.app.secret_key = 'supersecretkey'  # Clé secrète pour les sessions
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+        self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        self.db = SQLAlchemy(self.app)
+
+# Utilisation du Singleton
+db_manager = DatabaseManager()
+app = db_manager.app
+db = db_manager.db
