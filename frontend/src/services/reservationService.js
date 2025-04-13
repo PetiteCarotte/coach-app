@@ -42,3 +42,18 @@ export const makeReservation = async (reservationData) => {
 
   return data;
 };
+
+// ✅ Annuler une réservation
+export const cancelReservation = async (reservationId) => {
+  const res = await fetch(`${API_BASE_URL}/reservations/${reservationId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('userToken')}`,
+    },
+  });
+
+  if (!res.ok) {
+    const data = await res.json();
+    throw new Error(data.error || 'Erreur lors de l\'annulation de la réservation');
+  }
+};
