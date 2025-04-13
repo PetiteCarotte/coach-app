@@ -1,0 +1,117 @@
+2025-04-13 04:50:02 - 127.0.0.1 - - [13/Apr/2025 04:50:02] "GET /api/coaches HTTP/1.1" 200 -
+2025-04-13 04:50:03 - 127.0.0.1 - - [13/Apr/2025 04:50:03] "GET /api/programs HTTP/1.1" 200 -
+2025-04-13 04:50:03 - 127.0.0.1 - - [13/Apr/2025 04:50:03] "GET /api/coaches HTTP/1.1" 200 -
+2025-04-13 04:50:03 - 127.0.0.1 - - [13/Apr/2025 04:50:03] "GET /api/programs HTTP/1.1" 200 -
+2025-04-13 04:50:06 - 127.0.0.1 - - [13/Apr/2025 04:50:06] "GET /api/available_slots?coach_id=2&date=2025-04-13 HTTP/1.1" 200 -
+2025-04-13 04:50:09 - 127.0.0.1 - - [13/Apr/2025 04:50:09] "OPTIONS /api/reservations HTTP/1.1" 200 -
+2025-04-13 04:50:09 - Reservation 18 creee pour le client 5.
+2025-04-13 04:50:09 - 127.0.0.1 - - [13/Apr/2025 04:50:09] "[35m[1mPOST /api/reservations HTTP/1.1[0m" 201 -
+2025-04-13 04:50:38 - 127.0.0.1 - - [13/Apr/2025 04:50:38] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:50:38 - 127.0.0.1 - - [13/Apr/2025 04:50:38] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:50:39 - 127.0.0.1 - - [13/Apr/2025 04:50:39] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:50:39 - 127.0.0.1 - - [13/Apr/2025 04:50:39] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:50:41 - 127.0.0.1 - - [13/Apr/2025 04:50:41] "OPTIONS /api/reservations/18 HTTP/1.1" 200 -
+2025-04-13 04:50:41 - Reservation 18 annulee pour le client 5.
+2025-04-13 04:50:41 - 127.0.0.1 - - [13/Apr/2025 04:50:41] "DELETE /api/reservations/18 HTTP/1.1" 200 -
+2025-04-13 04:51:55 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\observers\\email_observer.py', reloading
+2025-04-13 04:51:55 -  * Restarting with stat
+2025-04-13 04:51:56 -  * Debugger is active!
+2025-04-13 04:51:56 -  * Debugger PIN: 729-766-206
+2025-04-13 04:52:05 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\observers\\logging_observer.py', reloading
+2025-04-13 04:52:05 -  * Restarting with stat
+2025-04-13 04:52:07 -  * Debugger is active!
+2025-04-13 04:52:07 -  * Debugger PIN: 729-766-206
+2025-04-13 04:52:17 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\utils\\event_manager.py', reloading
+2025-04-13 04:52:17 -  * Restarting with stat
+2025-04-13 04:52:19 -  * Debugger is active!
+2025-04-13 04:52:19 -  * Debugger PIN: 729-766-206
+2025-04-13 04:52:27 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\strategies\\user_strategies.py', reloading
+2025-04-13 04:52:27 -  * Restarting with stat
+2025-04-13 04:52:29 -  * Debugger is active!
+2025-04-13 04:52:29 -  * Debugger PIN: 729-766-206
+2025-04-13 04:52:43 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\controllers\\reservation_controller.py', reloading
+2025-04-13 04:52:43 -  * Restarting with stat
+2025-04-13 04:52:44 -  * Debugger is active!
+2025-04-13 04:52:44 -  * Debugger PIN: 729-766-206
+2025-04-13 04:52:49 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\routes\\reservation_routes.py', reloading
+2025-04-13 04:52:50 -  * Restarting with stat
+2025-04-13 04:52:51 -  * Debugger is active!
+2025-04-13 04:52:51 -  * Debugger PIN: 729-766-206
+2025-04-13 04:52:56 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\services\\reservation_service.py', reloading
+2025-04-13 04:52:57 -  * Restarting with stat
+2025-04-13 04:52:58 -  * Debugger is active!
+2025-04-13 04:52:58 -  * Debugger PIN: 729-766-206
+2025-04-13 04:53:07 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\services\\reservation_service.py', reloading
+2025-04-13 04:53:07 -  * Restarting with stat
+2025-04-13 04:53:09 -  * Debugger is active!
+2025-04-13 04:53:09 -  * Debugger PIN: 729-766-206
+2025-04-13 04:55:59 - 127.0.0.1 - - [13/Apr/2025 04:55:59] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:55:59 - 127.0.0.1 - - [13/Apr/2025 04:55:59] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:18 - 127.0.0.1 - - [13/Apr/2025 04:56:18] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:18 - 127.0.0.1 - - [13/Apr/2025 04:56:18] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:18 - 127.0.0.1 - - [13/Apr/2025 04:56:18] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:18 - 127.0.0.1 - - [13/Apr/2025 04:56:18] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:22 - 127.0.0.1 - - [13/Apr/2025 04:56:22] "GET /api/programs HTTP/1.1" 200 -
+2025-04-13 04:56:22 - 127.0.0.1 - - [13/Apr/2025 04:56:22] "GET /api/coaches HTTP/1.1" 200 -
+2025-04-13 04:56:22 - 127.0.0.1 - - [13/Apr/2025 04:56:22] "GET /api/programs HTTP/1.1" 200 -
+2025-04-13 04:56:23 - 127.0.0.1 - - [13/Apr/2025 04:56:23] "GET /api/coaches HTTP/1.1" 200 -
+2025-04-13 04:56:25 - 127.0.0.1 - - [13/Apr/2025 04:56:25] "GET /api/programs HTTP/1.1" 200 -
+2025-04-13 04:56:25 - 127.0.0.1 - - [13/Apr/2025 04:56:25] "GET /api/coaches HTTP/1.1" 200 -
+2025-04-13 04:56:25 - 127.0.0.1 - - [13/Apr/2025 04:56:25] "GET /api/programs HTTP/1.1" 200 -
+2025-04-13 04:56:25 - 127.0.0.1 - - [13/Apr/2025 04:56:25] "GET /api/coaches HTTP/1.1" 200 -
+2025-04-13 04:56:29 - 127.0.0.1 - - [13/Apr/2025 04:56:29] "GET /api/available_slots?coach_id=2&date=2025-04-06 HTTP/1.1" 200 -
+2025-04-13 04:56:29 - 127.0.0.1 - - [13/Apr/2025 04:56:29] "GET /api/available_slots?coach_id=2&date=2025-04-13 HTTP/1.1" 200 -
+2025-04-13 04:56:33 - 127.0.0.1 - - [13/Apr/2025 04:56:33] "OPTIONS /api/reservations HTTP/1.1" 200 -
+2025-04-13 04:56:33 - Reservation 19 creee pour le client 5.
+2025-04-13 04:56:33 - 127.0.0.1 - - [13/Apr/2025 04:56:33] "[35m[1mPOST /api/reservations HTTP/1.1[0m" 201 -
+2025-04-13 04:56:37 - 127.0.0.1 - - [13/Apr/2025 04:56:37] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:37 - 127.0.0.1 - - [13/Apr/2025 04:56:37] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:37 - 127.0.0.1 - - [13/Apr/2025 04:56:37] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:38 - 127.0.0.1 - - [13/Apr/2025 04:56:38] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:46 - 127.0.0.1 - - [13/Apr/2025 04:56:46] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:46 - 127.0.0.1 - - [13/Apr/2025 04:56:46] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:46 - 127.0.0.1 - - [13/Apr/2025 04:56:46] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:46 - 127.0.0.1 - - [13/Apr/2025 04:56:46] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:57 - 127.0.0.1 - - [13/Apr/2025 04:56:57] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:57 - 127.0.0.1 - - [13/Apr/2025 04:56:57] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:57 - 127.0.0.1 - - [13/Apr/2025 04:56:57] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:56:57 - 127.0.0.1 - - [13/Apr/2025 04:56:57] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 04:57:22 - 127.0.0.1 - - [13/Apr/2025 04:57:22] "OPTIONS /api/reservations/19 HTTP/1.1" 200 -
+2025-04-13 04:57:22 - Reservation 19 annulee pour le client 5.
+2025-04-13 04:57:22 - 127.0.0.1 - - [13/Apr/2025 04:57:22] "DELETE /api/reservations/19 HTTP/1.1" 200 -
+2025-04-13 05:04:26 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\observers\\observer_interface.py', reloading
+2025-04-13 05:04:26 -  * Restarting with stat
+2025-04-13 05:04:28 -  * Debugger is active!
+2025-04-13 05:04:28 -  * Debugger PIN: 729-766-206
+2025-04-13 05:06:02 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\observers\\email_observer.py', reloading
+2025-04-13 05:06:02 -  * Restarting with stat
+2025-04-13 05:06:04 -  * Debugger is active!
+2025-04-13 05:06:04 -  * Debugger PIN: 729-766-206
+2025-04-13 05:06:12 -  * Detected change in 'C:\\Cours\\5A-S1\\Hiver\\IFT785-AOO\\ProjetSession\\backend\\observers\\observer_interface.py', reloading
+2025-04-13 05:06:12 -  * Restarting with stat
+2025-04-13 05:06:14 -  * Debugger is active!
+2025-04-13 05:06:14 -  * Debugger PIN: 729-766-206
+2025-04-13 05:06:37 - 127.0.0.1 - - [13/Apr/2025 05:06:37] "OPTIONS /api/login HTTP/1.1" 200 -
+2025-04-13 05:06:37 - 127.0.0.1 - - [13/Apr/2025 05:06:37] "[31m[1mPOST /api/login HTTP/1.1[0m" 401 -
+2025-04-13 05:06:46 - 127.0.0.1 - - [13/Apr/2025 05:06:46] "OPTIONS /api/login HTTP/1.1" 200 -
+2025-04-13 05:06:46 - 127.0.0.1 - - [13/Apr/2025 05:06:46] "POST /api/login HTTP/1.1" 200 -
+2025-04-13 05:06:52 - 127.0.0.1 - - [13/Apr/2025 05:06:52] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 05:06:52 - 127.0.0.1 - - [13/Apr/2025 05:06:52] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 05:06:52 - 127.0.0.1 - - [13/Apr/2025 05:06:52] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 05:06:52 - 127.0.0.1 - - [13/Apr/2025 05:06:52] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 05:06:53 - 127.0.0.1 - - [13/Apr/2025 05:06:53] "GET /api/coaches HTTP/1.1" 200 -
+2025-04-13 05:06:54 - 127.0.0.1 - - [13/Apr/2025 05:06:54] "GET /api/programs HTTP/1.1" 200 -
+2025-04-13 05:06:54 - 127.0.0.1 - - [13/Apr/2025 05:06:54] "GET /api/coaches HTTP/1.1" 200 -
+2025-04-13 05:06:54 - 127.0.0.1 - - [13/Apr/2025 05:06:54] "GET /api/programs HTTP/1.1" 200 -
+2025-04-13 05:06:57 - 127.0.0.1 - - [13/Apr/2025 05:06:57] "GET /api/available_slots?coach_id=2&date=2025-04-12 HTTP/1.1" 200 -
+2025-04-13 05:06:57 - 127.0.0.1 - - [13/Apr/2025 05:06:57] "GET /api/available_slots?coach_id=2&date=2025-04-13 HTTP/1.1" 200 -
+2025-04-13 05:07:00 - 127.0.0.1 - - [13/Apr/2025 05:07:00] "OPTIONS /api/reservations HTTP/1.1" 200 -
+2025-04-13 05:07:00 - Reservation 20 creee pour le client 5.
+2025-04-13 05:07:00 - 127.0.0.1 - - [13/Apr/2025 05:07:00] "[35m[1mPOST /api/reservations HTTP/1.1[0m" 201 -
+2025-04-13 05:07:03 - 127.0.0.1 - - [13/Apr/2025 05:07:03] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 05:07:03 - 127.0.0.1 - - [13/Apr/2025 05:07:03] "OPTIONS /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 05:07:04 - 127.0.0.1 - - [13/Apr/2025 05:07:04] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 05:07:04 - 127.0.0.1 - - [13/Apr/2025 05:07:04] "GET /api/my_reservations HTTP/1.1" 200 -
+2025-04-13 05:07:17 - 127.0.0.1 - - [13/Apr/2025 05:07:17] "OPTIONS /api/reservations/20 HTTP/1.1" 200 -
+2025-04-13 05:07:17 - Reservation 20 annulee pour le client 5.
+2025-04-13 05:07:17 - 127.0.0.1 - - [13/Apr/2025 05:07:17] "DELETE /api/reservations/20 HTTP/1.1" 200 -
