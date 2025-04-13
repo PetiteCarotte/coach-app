@@ -1,12 +1,23 @@
 from observers.observer_interface import Observer
+from adapters.email_adapter import SMTPAdapter
 
 class EmailObserver(Observer):
     """Observateur pour envoyer des emails."""
 
+    def __init__(self, email_service=None):
+        self.email_service = email_service or SMTPAdapter() # Utiliser SMTP par défaut
+
     def update(self, event_type, data):
         """Envoyer un email en fonction de l'événement."""
-        
         if event_type == "reservation_created":
-            print(f"Envoi d'un email de confirmation a {data['client_email']} pour la reservation {data['reservation_id']}.")
+            self.email_service.send_email(
+                to=data['client_email'],
+                subject="Confirmation de réservation",
+                body=f"Votre réservation {data['reservation_id']} a été confirmée."
+            )
         elif event_type == "reservation_cancelled":
-            print(f"Envoi d'un email d'annulation a {data['client_email']} pour la reservation {data['reservation_id']}.")
+            self.email_service.send_email(
+                to=data['client_email'],
+                subject="Annulation de réservation",
+                body=f"Votre réservation {data['reservation_id']} a été annulée."
+            )
