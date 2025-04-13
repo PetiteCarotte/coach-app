@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from controllers.reservation_controller import handle_get_available_slots, handle_create_reservation, handle_cancel_reservation
+from utils.decorators import requires_auth
 
 reservation_routes = Blueprint('reservation_routes', __name__)
 
@@ -16,6 +17,7 @@ def get_available_slots():
     return handle_get_available_slots(coach_id, date_str)
 
 @reservation_routes.route('/reservations', methods=['POST'])
+@requires_auth
 def create_reservation():
     """Créer une réservation."""
     
@@ -28,6 +30,7 @@ def create_reservation():
     return handle_create_reservation(data)
 
 @reservation_routes.route('/reservations/<int:reservation_id>', methods=['DELETE'])
+@requires_auth
 def cancel_reservation(reservation_id):
     """Annuler une réservation."""
     
