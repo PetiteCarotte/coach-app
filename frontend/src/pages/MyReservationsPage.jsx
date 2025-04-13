@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Table } from "react-bootstrap";
+import { Container, Row, Col, Card, Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../services/authService";
+import { cancelReservation } from "../services/reservationService";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
@@ -38,51 +39,75 @@ const MyReservationsPage = () => {
 
     fetchReservations();
   }, [navigate]);
-return (
+
+  const handleCancel = async (reservationId) => {
+    if (window.confirm("Êtes-vous sûr de vouloir annuler cette réservation ?")) {
+      try {
+        await cancelReservation(reservationId);
+        alert("Réservation annulée avec succès.");
+        setReservations((prev) => prev.filter((res) => res.id !== reservationId));
+      } catch (err) {
+        alert("Erreur lors de l'annulation de la réservation.");
+      }
+    }
+  };
+
+  return (
     <div>
-        <NavBar />
-        <Container className="my-5">
-            <Row>
-                <Col>
-                    <Card className="shadow-sm">
-                        <Card.Header className="bg-primary text-white">
-                            Mes Réservations
-                        </Card.Header>
-                        <Card.Body>
-                            {error && <p className="text-danger">{error}</p>}
-                            {reservations.length > 0 ? (
-                                <Table striped bordered hover>
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Programme</th>
-                                            <th>Coach</th>
-                                            <th>Date</th>
-                                            <th>Créneau</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {reservations.map((reservation, index) => (
-                                            <tr key={reservation.id}>
-                                                <td>{index + 1}</td>
-                                                <td>{reservation.program_name}</td>
-                                                <td>{`${reservation.coach_name}`}</td>
-                                                <td>{reservation.date}</td>
-                                                <td>{`${reservation.start_time} - ${reservation.end_time}`}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </Table>
-                            ) : (
-                                <p>Aucune réservation trouvée.</p>
-                            )}
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
-        <Footer />
+      <NavBar />
+      <Container className="my-5">
+        <Row>
+          <Col>
+            <Card className="shadow-sm">
+              <Card.Header className="bg-primary text-white">
+                Mes Réservations
+              </Card.Header>
+              <Card.Body>
+                {error && <p className="text-danger">{error}</p>}
+                {reservations.length > 0 ? (
+                  <Table striped bordered hover>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Programme</th>
+                        <th>Coach</th>
+                        <th>Date</th>
+                        <th>Créneau</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {reservations.map((reservation, index) => (
+                        <tr key={reservation.id}>
+                          <td>{index + 1}</td>
+                          <td>{reservation.program_name}</td>
+                          <td>{`${reservation.coach_name}`}</td>
+                          <td>{reservation.date}</td>
+                          <td>{`${reservation.start_time} - ${reservation.end_time}`}</td>
+                          <td>
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={() => handleCancel(reservation.id)}
+                            >
+                              Annuler
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                ) : (
+                  <p>Aucune réservation trouvée.</p>
+                )}
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
     </div>
-);
+  );
 };
+
 export default MyReservationsPage;
