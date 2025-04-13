@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from controllers.reservation_controller import handle_get_available_slots, handle_create_reservation
+from controllers.reservation_controller import handle_get_available_slots, handle_create_reservation, handle_cancel_reservation
 
 reservation_routes = Blueprint('reservation_routes', __name__)
 
@@ -26,3 +26,9 @@ def create_reservation():
         return jsonify({'error': 'Champs manquants'}), 400
 
     return handle_create_reservation(data)
+
+@reservation_routes.route('/reservations/<int:reservation_id>', methods=['DELETE'])
+def cancel_reservation(reservation_id):
+    """Annuler une réservation."""
+    
+    return handle_cancel_reservation(reservation_id)

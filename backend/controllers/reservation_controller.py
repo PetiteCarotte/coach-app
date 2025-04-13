@@ -1,4 +1,4 @@
-from services.reservation_service import get_available_slots_service, create_reservation_service
+from services.reservation_service import get_available_slots_service, create_reservation_service, cancel_reservation_service
 from flask import jsonify, request
 
 def handle_get_available_slots(coach_id, date_str):
@@ -21,3 +21,12 @@ def handle_create_reservation(data):
         return jsonify(result), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+def handle_cancel_reservation(reservation_id):
+    """Gérer l'annulation d'une réservation."""
+    
+    try:
+        result = cancel_reservation_service(reservation_id)
+        return jsonify(result), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400

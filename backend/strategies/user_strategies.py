@@ -1,4 +1,5 @@
 from models.Reservation import Reservation
+from utils.db import db
 
 class ClientStrategy:
     """Stratégie pour les clients."""
@@ -32,8 +33,16 @@ class ClientStrategy:
     @staticmethod
     def cancel_reservation(reservation_id):
         """Annuler une réservation."""
+        
+        reservation = Reservation.query.get(reservation_id)
+        if not reservation:
+            raise ValueError("Réservation introuvable.")
 
-        return f"Réservation avec l'ID {reservation_id} annulée pour le client."
+        client_email = reservation.client.email
+        client_id = reservation.client_id
+
+        db.session.delete(reservation)
+        return {"client_id": client_id, "client_email": client_email}
 
 
 class CoachStrategy:
