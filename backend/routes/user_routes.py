@@ -1,17 +1,15 @@
-from flask import Blueprint, request, jsonify, session, g
-from flask_cors import CORS
-from utils.db import app, db
-from controllers.user_controller import handle_register_user, handle_login_user, handle_get_my_reservations
-from models.User import User, Client, Coach
-from models.Reservation import Reservation
-from models.Program import Program
-from models.Slot import Slot
-import jwt
-import datetime
-from factories.user_factory import UserFactory
-from strategies.user_strategies import ClientStrategy
+""" Routes pour la gestion des utilisateurs. """
 
-SECRET_KEY = 'supersecretkey' 
+from flask import Blueprint, request, jsonify, session
+from flask_cors import CORS
+from utils.db import app
+from controllers.user_controller import (
+    handle_register_user,
+    handle_login_user,
+    handle_get_my_reservations
+)
+
+SECRET_KEY = 'supersecretkey'
 
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 
@@ -20,6 +18,7 @@ user_routes = Blueprint('user_routes', __name__)
 
 @app.route('/')
 def hello():
+    """Route de test."""
     return "Hello World!"
 
 # Route d'inscription

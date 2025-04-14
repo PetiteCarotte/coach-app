@@ -1,5 +1,11 @@
+""" Routes pour la gestion des réservations. """
+
 from flask import Blueprint, request, jsonify
-from controllers.reservation_controller import handle_get_available_slots, handle_create_reservation, handle_cancel_reservation
+from controllers.reservation_controller import (
+    handle_get_available_slots,
+    handle_create_reservation,
+    handle_cancel_reservation
+)
 from utils.decorators import requires_auth
 
 reservation_routes = Blueprint('reservation_routes', __name__)
@@ -7,7 +13,6 @@ reservation_routes = Blueprint('reservation_routes', __name__)
 @reservation_routes.route('/available_slots', methods=['GET'])
 def get_available_slots():
     """Récupérer les créneaux disponibles pour un coach à une date donnée."""
-    
     coach_id = request.args.get('coach_id', type=int)
     date_str = request.args.get('date', type=str)
 
@@ -20,7 +25,6 @@ def get_available_slots():
 @requires_auth
 def create_reservation():
     """Créer une réservation."""
-    
     data = request.get_json()
     required_fields = ['coach_id', 'program_id', 'slot_id', 'date']
 
@@ -33,5 +37,4 @@ def create_reservation():
 @requires_auth
 def cancel_reservation(reservation_id):
     """Annuler une réservation."""
-    
     return handle_cancel_reservation(reservation_id)

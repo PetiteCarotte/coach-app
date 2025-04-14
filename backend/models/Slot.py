@@ -1,3 +1,7 @@
+"""Définit le modèle des créneaux horaires."""
+
+# pylint: disable=too-few-public-methods
+
 from utils.db import db
 
 class Slot(db.Model):

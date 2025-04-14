@@ -1,3 +1,7 @@
+"""Définit le modèle de programme d'entraînement."""
+
+# pylint: disable=too-few-public-methods
+
 from utils.db import db
 
 class Program(db.Model):

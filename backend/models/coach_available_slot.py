@@ -1,3 +1,7 @@
+"""Définit le modèle des créneaux disponibles pour les coachs."""
+
+#pylint: disable=too-few-public-methods
+
 from utils.db import db
 
 class CoachAvailableSlot(db.Model):

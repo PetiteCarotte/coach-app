@@ -1,13 +1,14 @@
-# reservation_service.py
+""" Service de réservation pour gérer les réservations de créneaux horaires. """
 
-from models.Slot import Slot
-from models.Reservation import Reservation
-from models.CoachAvailableSlot import CoachAvailableSlot
-from models.User import User 
-from utils.db import db
-from utils.event_manager import EventManager
+# pylint: disable=raise-missing-from
+
 from datetime import datetime
 import jwt
+from models.slot import Slot
+from models.reservation import Reservation
+from models.user import User
+from utils.db import db
+from utils.event_manager import EventManager
 from strategies.user_strategies import ClientStrategy
 
 SECRET_KEY = 'supersecretkey'
@@ -44,14 +45,14 @@ def get_available_slots_service(coach_id, date_str):
 
 def create_reservation_service(data, token):
     """Créer une réservation pour un client."""
-    
+
     try:
         # Décoder le token JWT pour obtenir le client_id
         decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
         client_id = decoded.get('user_id')
 
         # Récupérer l'email du client depuis la table User
-        client = User.query.get(client_id)
+        client = db.session.get(User, client_id)
         if not client:
             raise ValueError("Client introuvable.")
 
@@ -110,4 +111,3 @@ def cancel_reservation_service(reservation_id):
     except Exception as e:
         db.session.rollback()
         raise ValueError(f"Erreur lors de l'annulation de la réservation : {str(e)}")
-

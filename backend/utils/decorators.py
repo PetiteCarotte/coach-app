@@ -1,3 +1,5 @@
+""" Module de décorateurs pour la gestion des erreurs et de l'authentification. """
+
 from functools import wraps
 from flask import request, jsonify
 import jwt

@@ -1,10 +1,12 @@
-# coach_service.py
+""" Service pour la gestion des coachs. """
 
-from models.User import Coach
+# pylint: disable=raise-missing-from
+
+from models.user import Coach
 
 def get_coaches_service():
     """Récupérer la liste des coachs."""
-    
+
     try:
         coaches = Coach.query.all()
         return coaches

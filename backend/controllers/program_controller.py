@@ -1,9 +1,10 @@
+""" Contrôleur pour gérer les programmes d'entraînement."""
+
 from services.program_service import get_programs_service
 from flask import jsonify
 
 def handle_get_programs():
     """Gérer la récupération des programmes."""
-    
     try:
         programs = get_programs_service()
         return jsonify([{

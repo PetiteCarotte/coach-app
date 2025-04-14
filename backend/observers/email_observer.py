@@ -1,3 +1,7 @@
+""" Observateur pour envoyer des emails. """
+
+# pylint: disable=import-error, too-few-public-methods
+
 from observers.observer_interface import Observer
 from adapters.email_adapter import SMTPAdapter
 

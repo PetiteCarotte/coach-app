@@ -1,3 +1,7 @@
+""" Interface pour les observateurs dans le modèle Observer."""
+
+# pylint: disable=too-few-public-methods, unnecessary-pass
+
 from abc import ABC, abstractmethod
 
 class Observer(ABC):

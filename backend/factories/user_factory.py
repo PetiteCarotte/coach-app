@@ -1,12 +1,20 @@
-from models.User import Client, Coach
+""" Factory pour créer des utilisateurs avec des stratégies associées. """
+
+# pylint: disable=too-few-public-methods, import-error
+
+from models.user import Client, Coach
 from strategies.user_strategies import ClientStrategy, CoachStrategy
 
 class UserFactory:
     """Factory combinée avec des stratégies pour créer des utilisateurs."""
 
     user_creators = {
-        "Client": lambda first_name, last_name, email, password: Client(first_name, last_name, email, password, role="Client"),
-        "Coach": lambda first_name, last_name, email, password: Coach(first_name, last_name, email, password, role="Coach"),
+        "Client": lambda first_name, last_name, email, password: Client(
+            first_name, last_name, email, password, role="Client"
+        ),
+        "Coach": lambda first_name, last_name, email, password: Coach(
+            first_name, last_name, email, password, role="Coach"
+        ),
     }
 
     user_strategies = {
@@ -20,12 +28,9 @@ class UserFactory:
 
         if role not in UserFactory.user_creators:
             raise ValueError(f"Role invalide: {role}")
-        
         # Créer l'utilisateur
         user = UserFactory.user_creators[role](first_name, last_name, email, password)
-        
         # Associer la stratégie au rôle
         strategy = UserFactory.user_strategies[role]
         user.strategy = strategy  # Injecter la stratégie dans l'utilisateur
-        
         return user

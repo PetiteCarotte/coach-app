@@ -1,4 +1,5 @@
-# controllers/user_controller.py
+""" Contrôleur pour gérer les utilisateurs et les réservations. """
+
 from flask import jsonify, session, request
 from services.user_service import authenticate_user, register_new_user, get_reservations_for_client
 import jwt
@@ -7,7 +8,6 @@ SECRET_KEY = 'supersecretkey'
 
 def handle_register_user(data):
     """Gérer l'inscription d'un nouvel utilisateur."""
-
     first_name = data.get('firstName')
     last_name = data.get('lastName')
     email = data.get('email')
@@ -20,7 +20,6 @@ def handle_register_user(data):
 
 def handle_login_user(data):
     """Gérer la connexion d'un utilisateur."""
-
     email = data.get('email')
     password = data.get('password')
 
@@ -33,7 +32,6 @@ def handle_login_user(data):
 
 def handle_get_my_reservations(request):
     """Gérer la récupération des réservations du client connecté."""
-
     token = request.headers.get('Authorization', '').replace('Bearer ', '')
     try:
         decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])

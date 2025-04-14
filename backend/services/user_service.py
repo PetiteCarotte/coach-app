@@ -1,13 +1,14 @@
-# services/user_service.py
+""" Service pour la gestion des utilisateurs et de l'authentification."""
 
-from models.User import User, Client, Coach
-from models.Slot import Slot
-from models.CoachAvailableSlot import CoachAvailableSlot
-from utils.db import db
-from werkzeug.security import generate_password_hash
-from sqlalchemy.exc import IntegrityError
-import jwt
+# pylint: disable=too-many-arguments, too-many-positional-arguments, too-many-boolean-expressions, too-many-return-statements, broad-exception-caught, raise-missing-from
+
 import datetime
+import jwt
+from sqlalchemy.exc import IntegrityError
+from models.user import User
+from models.slot import Slot
+from models.coach_available_slot import CoachAvailableSlot
+from utils.db import db
 from factories.user_factory import UserFactory
 from strategies.user_strategies import ClientStrategy
 
@@ -15,8 +16,8 @@ SECRET_KEY = 'supersecretkey'
 
 def register_new_user(first_name, last_name, email, password, confirm_password, role):
     """ Inscription d'un nouvel utilisateur """
-    
-    if not first_name or not last_name or not email or not password or not confirm_password or not role:
+
+    if not all([first_name, last_name, email, password, confirm_password, role]):
         return {'error': 'Tous les champs sont requis.'}, 400
 
     if password != confirm_password:
@@ -30,8 +31,8 @@ def register_new_user(first_name, last_name, email, password, confirm_password, 
         return {'error': 'Cet email est déjà utilisé.'}, 400
 
     try:
-        new_user = UserFactory.create_user(role, first_name, last_name, email, password) # Utilisation de la factory
-   
+        new_user = UserFactory.create_user(role, first_name, last_name, email, password)
+
         role_action = new_user.strategy.perform_action() # Utilisation de la stratégie
         print(f"Action spécifique pour le rôle {role}: {role_action}")
         if role == "Coach":
@@ -59,8 +60,8 @@ def register_new_user(first_name, last_name, email, password, confirm_password, 
         return {'error': str(e)}, 500
 
 def authenticate_user(email, password):
-    """ Authentifier l'utilisateur et retourner l'objet utilisateur ainsi que le jeton JWT si réussi """
-    
+    """ Authentifier l'utilisateur et retourner l'objet utilisateur ainsi que le jeton JWT """
+
     user = User.query.filter_by(email=email).first()
     if user and user.check_password(password):
         token = jwt.encode({
@@ -72,5 +73,5 @@ def authenticate_user(email, password):
 
 def get_reservations_for_client(client_id):
     """Récupérer les réservations pour un client donné."""
-    
+
     return ClientStrategy.view_reservations(client_id)

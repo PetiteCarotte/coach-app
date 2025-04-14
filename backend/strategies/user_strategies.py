@@ -1,5 +1,9 @@
-from models.Reservation import Reservation
+""" Stratégies pour les utilisateurs : client et coach. """
+
+# pylint: disable=import-error
+
 from utils.db import db
+from models.reservation import Reservation
 
 class ClientStrategy:
     """Stratégie pour les clients."""
@@ -33,8 +37,8 @@ class ClientStrategy:
     @staticmethod
     def cancel_reservation(reservation_id):
         """Annuler une réservation."""
-        
-        reservation = Reservation.query.get(reservation_id)
+
+        reservation = db.session.get(Reservation, reservation_id)
         if not reservation:
             raise ValueError("Réservation introuvable.")
 

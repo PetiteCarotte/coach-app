@@ -1,9 +1,10 @@
+""" Contrôleur pour gérer les opérations liées aux réservations."""
+
 from services.reservation_service import get_available_slots_service, create_reservation_service, cancel_reservation_service
 from flask import jsonify, request
 
 def handle_get_available_slots(coach_id, date_str):
     """Gérer la récupération des créneaux disponibles."""
-    
     try:
         available_slots = get_available_slots_service(coach_id, date_str)
         return jsonify(available_slots), 200
@@ -12,7 +13,6 @@ def handle_get_available_slots(coach_id, date_str):
 
 def handle_create_reservation(data):
     """Créer une réservation."""
-
     token = request.headers.get('Authorization', '').replace('Bearer ', '')
     try:
         result = create_reservation_service(data, token)
@@ -24,7 +24,6 @@ def handle_create_reservation(data):
 
 def handle_cancel_reservation(reservation_id):
     """Gérer l'annulation d'une réservation."""
-    
     try:
         result = cancel_reservation_service(reservation_id)
         return jsonify(result), 200
