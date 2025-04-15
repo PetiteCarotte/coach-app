@@ -1,7 +1,9 @@
 """ Contrôleur pour gérer les programmes d'entraînement."""
 
-from services.program_service import get_programs_service
+# pylint: disable=broad-exception-caught
+
 from flask import jsonify
+from services.program_service import get_programs_service
 
 def handle_get_programs():
     """Gérer la récupération des programmes."""

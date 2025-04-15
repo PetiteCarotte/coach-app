@@ -1,8 +1,11 @@
-# conftest.py (à la racine de tests/)
+""" Configuration des tests pour l'application Flask. """
+
+# pylint: disable=redefined-outer-name
+
 import pytest
+from sqlalchemy.orm import scoped_session, sessionmaker
 from app import app
 from app import db
-from sqlalchemy.orm import scoped_session, sessionmaker
 
 @pytest.fixture(scope="module")
 def app_context():

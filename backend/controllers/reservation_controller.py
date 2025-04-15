@@ -1,8 +1,13 @@
 """ Contrôleur pour gérer les opérations liées aux réservations."""
 
-from services.reservation_service import get_available_slots_service, create_reservation_service, cancel_reservation_service
-from flask import jsonify, request
+# pylint: disable=broad-exception-caught
 
+from flask import jsonify, request
+from services.reservation_service import (
+    get_available_slots_service,
+    create_reservation_service,
+    cancel_reservation_service
+)
 def handle_get_available_slots(coach_id, date_str):
     """Gérer la récupération des créneaux disponibles."""
     try:

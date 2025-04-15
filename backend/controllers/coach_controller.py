@@ -1,7 +1,9 @@
 """ Controleur pour gérer les opérations liées aux coachs."""
 
-from services.coach_service import get_coaches_service
+# pylint: disable=broad-exception-caught
+
 from flask import jsonify
+from services.coach_service import get_coaches_service
 
 def handle_get_coaches():
     """Gérer la récupération des coachs."""
