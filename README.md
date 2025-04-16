@@ -4,7 +4,7 @@
 
 ### Structure Backend
 Le backend suit une architecture basée sur le pattern **MVC (Model-View-Controller)** et respecte les principes **SOLID**.  
-- **Routes** : Gèrent les points d'entrée HTTP. Elles sont responsables du routage pur et délèguent la logique métier aux contrôleurs.  
+- **Routes** : Gèrent les points d'entrée HTTP. Elles sont responsables du routage pur et délèguent la logique métier aux services.  
 - **Controllers** : Contiennent la logique de gestion des requêtes et des réponses HTTP. Ils orchestrent les appels aux services et renvoient les réponses au client.  
 - **Services** : Contiennent la logique métier réutilisable et testable. Ils encapsulent les règles métier et interagissent avec les modèles.  
 - **Models** : Définissent les entités et leur interaction avec la base de données via SQLAlchemy.  
@@ -118,7 +118,6 @@ La base de données est gérée avec **PostgreSQL** et **SQLAlchemy**. Les table
    - Modifier le fichier `.env` avec les informations de connexion PostgreSQL.  
    - Initialiser la base avec :  
      ```bash
-     flask db upgrade
      python app.py
      ```  
 
